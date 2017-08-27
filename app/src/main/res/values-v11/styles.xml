@@ -1,0 +1,7 @@
+<resources>
+
+	<style name="Theme.DialogThemeBase" parent="Theme.DialogThemeBaseBase">
+		<item name="android:buttonBarButtonStyle">@style/Theme.DialogButton</item>
+	</style>
+
+</resources>

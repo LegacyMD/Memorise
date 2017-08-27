@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto"
+	  xmlns:tools="http://schemas.android.com/tools"
+	  tools:context=".GroupList">
+
+	<item android:id="@+id/grouplist_backup_load"
+		  android:title="@string/group_backup_load"
+		  android:icon="@drawable/ic_action_collection"
+		  app:showAsAction="ifRoom" />
+
+	<item android:id="@+id/grouplist_clear_memory"
+		  android:title="CLEAR"
+		  app:showAsAction="never"/>
+
+	<item android:id="@+id/grouplist_list_memory"
+		  android:title="LIST"
+		  app:showAsAction="never"/>
+
+	<item android:id="@+id/grouplist_list_reload"
+		  android:title="RELOAD"
+		  app:showAsAction="never"/>
+</menu>

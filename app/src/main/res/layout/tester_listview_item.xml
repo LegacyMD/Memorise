@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:gravity="center_vertical"
+	android:orientation="horizontal"
+	android:paddingTop="@dimen/margin_level_0"
+	android:paddingBottom="@dimen/margin_level_0"
+	tools:context="paijan.memorise.tester.WordTesterPager" >
+
+	<TextView android:id="@+id/tester_listview_item_text1"
+		style="@style/Theme.ListViewItemText"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:gravity="start"
+		android:text="@string/sample_short"/>
+
+	<TextView android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:gravity="center"
+		android:text="-"
+		android:textStyle="bold"/>
+
+	<TextView android:id="@+id/tester_listview_item_text2"
+		style="@style/Theme.ListViewItemText"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:gravity="end"
+		android:text="@string/sample_short"/>
+
+</LinearLayout>

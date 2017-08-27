@@ -1,0 +1,118 @@
+<resources>
+
+	<!--General themes-->
+	<style name="Theme.App" parent="Theme.AppCompat">
+		<item name="android:windowBackground">@color/Back</item>
+		<item name="actionBarStyle">@style/Theme.Bar</item>
+		<item name="android:listViewStyle">@style/Theme.ListView</item>
+		<item name="android:textViewStyle">@style/Theme.InformativeText</item>
+		<item name="android:editTextStyle">@style/Theme.EditText</item>
+	</style>
+
+	<style name="Theme.Bar" parent="Widget.AppCompat.ActionBar">
+		<item name="background">@color/Bar</item>
+		<item name="titleTextStyle">@style/Theme.HeaderText</item>
+	</style>
+
+
+
+	<!--Text styles-->
+	<style name="Theme.HeaderText" parent="">
+		<item name="android:textColor">@color/Text</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textSize">@dimen/text_size_actionbar</item>
+	</style>
+
+	<style name="Theme.InformativeText" parent="">
+		<item name="android:textSize">@dimen/text_size_informative</item>
+		<item name="android:textColor">@color/Text</item>
+		<item name="android:textStyle">italic</item>
+	</style>
+
+	<style name="Theme.FullscreenInformationText" parent="Theme.InformativeText">
+		<item name="android:textSize">@dimen/text_size_screen_information</item>
+	</style>
+
+	<style name="Theme.EditText" parent="@android:style/Widget.EditText">
+		<item name="android:background">@drawable/apptheme_edit_text_holo_dark</item>
+		<item name="android:singleLine">true</item>
+		<item name="android:inputType">textCapSentences</item>
+		<item name="android:textColorHighlight">@color/BlueHoloDark</item>
+	</style>
+
+
+
+	<!--Word tester testing styles-->
+	<style name="Theme.WordTester.Word" parent="Theme.HeaderText">
+		<item name="android:textColor">@color/TextTesterWord</item>
+		<item name="android:maxLines">1</item>
+	</style>
+
+	<style name="Theme.WordTester.Comment" parent="Theme.InformativeText">
+		<item name="android:textStyle">italic</item>
+		<item name="android:maxLines">2</item>
+	</style>
+
+
+
+	<!--WordList styles-->
+	<style name="Theme.WordList.Word" parent="Theme.InformativeText"/>
+	<style name="Theme.WordList.Comment" parent="Theme.InformativeText">
+		<item name="android:textSize">@dimen/text_size_informative_small</item>
+		<item name="android:textColor">@color/TextDim</item>
+	</style>
+
+
+
+	<!--ListView-related themes-->
+	<style name="Theme.ListView" parent="Widget.AppCompat.ListView.Menu">
+		<item name="android:divider">@color/Effect</item>
+		<item name="android:dividerHeight">@dimen/listview_divider_height</item>
+	</style>
+
+	<style name="Theme.ListViewItemText" parent="Theme.InformativeText">
+		<item name="android:textSize">@dimen/text_size_listview_item</item>
+	</style>
+
+
+
+	<!--Dialog related themes-->
+	<style name="Theme.DialogThemeBaseBase" parent="">
+		<item name="android:windowBackground">@color/Transparent</item>
+		<item name="android:windowIsFloating">true</item>
+		<item name="android:windowTitleStyle">@style/Theme.DialogHeaderText</item>
+		<item name="android:editTextStyle">@style/Theme.EditText</item>
+	</style>
+
+	<style name="Theme.DialogTheme.Grouplist" parent="Theme.DialogThemeBase">
+		<item name="android:textViewStyle">@style/Theme.DialogInformativeTextBlue</item>
+	</style>
+
+	<style name="Theme.DialogTheme.Tester" parent="Theme.DialogThemeBase">
+		<item name="android:textViewStyle">@style/Theme.DialogInformativeTextBlue</item>
+	</style>
+
+	<style name="Theme.DialogTheme.List" parent="Theme.DialogThemeBase">
+		<item name="android:textViewStyle">@style/Theme.DialogInformativeTextBlue</item>
+	</style>
+
+
+
+	<!--Dialog related styles-->
+	<style name="Theme.DialogHeaderText" parent="Theme.HeaderText">
+		<item name="android:textColor">@color/DialogTitle</item>
+	</style>
+
+	<style name="Theme.DialogInformativeTextBlue" parent="Theme.InformativeText">
+		<item name="android:textColor">@color/DialogText</item>
+	</style>
+
+	<style name="Theme.DialogInformativeTextWhite" parent="Theme.InformativeText">
+		<item name="android:textColor">@color/Text</item>
+	</style>
+
+	<style name="Theme.DialogButton" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+		<item name="android:textColor">@color/DialogButtonColorList</item>
+	</style>
+
+</resources>

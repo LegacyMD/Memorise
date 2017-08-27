@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:padding="@dimen/margin_level_1"
+	tools:context="paijan.memorise.grouplist.GroupList">
+
+	<EditText
+		android:id="@+id/group_edit_dialog_edittext"
+		style="@style/Theme.EditText"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="@string/grouplist_edit_field_h"
+		android:inputType="textCapSentences"/>
+
+	<TextView
+		android:id="@+id/grouplist_edit_text_warning"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:text="@string/file_exists"
+		android:textColor="@color/TextBackupFileExists"/>
+
+</LinearLayout>

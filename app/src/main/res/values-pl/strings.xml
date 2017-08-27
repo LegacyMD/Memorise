@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="cancel">Anuluj</string>
+	<string name="file_empty">*Nazwa nie może być pusta</string>
+	<string name="file_exists">*Nazwa jest już w użyciu</string>
+	<string name="file_illegal">*Nazwa zawiera niedozwolone znaki</string>
+	<string name="group_add">Dodaj słowo</string>
+	<string-array name="group_tabnames">
+		<item>Sprawdzian</item>
+		<item>Zarządzanie słowami</item>
+	</string-array>
+	<string-array name="tester_add_langs">
+		<item>Słowo po polsku</item>
+		<item>Słowo po angielsku</item>
+		<item>Słowo po francusku</item>
+		<item>Słowo po niemiecku</item>
+		<item>Słowo po hiszpańsku</item>
+	</string-array>
+	<string name="group_backup_load">Wczytaj kopię zapasową</string>
+	<string name="group_backup_load_delete">Usuń kopię</string>
+	<string name="group_backup_load_list">Lista</string>
+	<string name="group_backup_load_nogroups">Nie znaleziono żadnych kopii zapasowych!</string>
+	<string name="group_backup_load_test">Test</string>
+	<string name="group_backup_save">Zapisz kopię zapasową</string>
+	<string name="group_backup_save_edittex_h">Wprowadź nazwę kopii</string>
+	<string name="group_delete">Usuń słowo</string>
+	<string name="group_delete_question">Usunąć słowo?</string>
+	<string name="group_edit">Edytuj słowo</string>
+	<string name="group_empty">Nie znaleziono słów!</string>
+	<string name="grouplist_add">Dodaj zbiór słow</string>
+	<string name="grouplist_add_field_langs">Języki</string>
+	<string name="grouplist_add_field_lang">Język</string>
+	<string name="grouplist_add_field_name">Nazwa</string>
+	<string name="grouplist_add_field_name_h">Wprowadź nazwę zbioru</string>
+	<string name="grouplist_add_field_type">Typ</string>
+	<string-array name="grouplist_add_languageslist">
+		<item>Polski</item>
+		<item>Angielski</item>
+		<item>Francuski</item>
+		<item>Niemiecki</item>
+		<item>Hiszpański</item>
+	</string-array><string-array name="grouplist_add_typeslist">
+		<item>Test</item>
+		<item>Lista</item>
+	</string-array>
+
+	<string name="grouplist_delete">Usuń zbiór</string>
+	<string name="grouplist_delete_question">Usunąć zbiór?</string>
+	<string name="grouplist_edit">Zmień nazwę zbioru</string>
+	<string name="grouplist_edit_field_h">Wprowadź nową nazwę zbioru</string>
+	<string name="grouplist_empty">Nie znaleziono zbiorów!</string>
+	<string name="list_help">Komentarz</string>
+	<string name="list_help_h">Opcjonalny dopisek</string>
+	<string name="list_word">Słowo</string>
+	<string name="list_word_h">Twoje słowo</string>
+	<string name="no">Nie</string>
+	<string name="sample_long">Nieprzeciętnie długi tekst, który nie powinien pojawić się w aplikacji ze wzlędu na swoją bezsensowność</string>
+	<string name="sample_short">Przykładowy tekst</string>
+	<string name="tester_add_help">Komentarz pomocniczy</string>
+	<string name="tester_add_help_h">Pomaga sprecyzować pytanie</string>
+	<string name="tester_add_syn">Synonimy</string>
+	<string name="tester_add_syn_h">Alternatywna odpowiedź</string>
+	<string name="tester_efficiency">Twoja efektywność to</string>
+	<string name="tester_results_retry">Spróbuj ponownie</string>
+	<string name="yes">Tak</string>
+	<plurals name="tester_results_correct">
+		<item quantity="one">Prawidłowa odpowiedź to:\n</item>
+		<item quantity="many">Prawidłowe odpowiedzi to:\n</item>
+		<item quantity="few">Prawidłowe odpowiedzi to:\n</item>
+	</plurals>
+	<string name="tester_results_success">Wykonałeś test bezbłędnie!</string>
+	<string name="tester_mistake">Pomyłka!</string>
+	<string name="group_menu_search">Wyszukaj słówka</string>
+</resources>

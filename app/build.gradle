@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+	compileSdkVersion 22
+	buildToolsVersion "22.0.1"
+
+	defaultConfig {
+		applicationId "paijan.memorise"
+		minSdkVersion 11
+		targetSdkVersion 22
+		versionCode 4
+		versionName "1.3"
+	}
+
+	signingConfigs {
+		release {
+			def console = System.console()
+
+			storeFile = new File(project.rootDir.parentFile.parentFile.path, "keystore\\paijanKeystore.jks")
+			storePassword = (console!=null) ? new String(console.readPassword('\nstorePassword: ')) : ""
+			keyAlias = 'paijanKeystore'
+			keyPassword = (console!=null) ? new String(console.readPassword('keyPassword: ')) : ""
+		}
+		debug {
+		}
+	}
+
+	buildTypes {
+		debug {
+			minifyEnabled true
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+			signingConfig signingConfigs.debug
+		}
+		release {
+			minifyEnabled true
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+			signingConfig signingConfigs.release
+		}
+	}
+}
+
+dependencies {
+	compile fileTree(include: ['*.jar'], dir: 'libs')
+	compile 'com.android.support:appcompat-v7:22.2.0'
+}

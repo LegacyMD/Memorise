@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/list_listview_item"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:paddingBottom="@dimen/margin_level_0"
+	android:paddingTop="@dimen/margin_level_0"
+	tools:context="paijan.memorise.list.WordListManage" >
+
+	<TextView android:id="@+id/list_listview_item_word"
+		style="@style/Theme.WordList.Word"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/sample_long"/>
+
+	<TextView android:id="@+id/list_listview_item_comment"
+		style="@style/Theme.WordList.Comment"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/margin_level_0"
+		android:text="@string/sample_short"/>
+
+</LinearLayout>

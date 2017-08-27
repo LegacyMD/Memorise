@@ -1,0 +1,113 @@
+<resources>
+
+	<!--General-->
+	<string name="name_app" translatable="false">Memorise</string>
+	<string name="title_activity_word_tester_pager" translatable="false">WordTesterPager</string>
+	<string name="title_activity_word_list_manage" translatable="false">WordListManage</string>
+
+	<string name="ok" translatable="false">OK</string>
+	<string name="yes">Yes</string>
+	<string name="no">No</string>
+	<string name="cancel">Cancel</string>
+
+	<string name="file_illegal">*Name contains illegal characters</string>
+	<string name="file_exists">*Name is already in use</string>
+	<string name="file_empty">*Name cannot by empty</string>
+
+	<!--Grouplist-->
+	<string name="grouplist_empty">No groups available!</string>
+
+	<string name="grouplist_add">Add new group</string>
+	<string name="grouplist_add_field_name">Name</string>
+	<string name="grouplist_add_field_name_h">Enter group name</string>
+	<string name="grouplist_add_field_langs">Languages</string>
+	<string name="grouplist_add_field_lang">Language</string>
+	<string name="grouplist_add_field_type">Type</string>
+	<string-array name="grouplist_add_languageslist">
+		<item>Polish</item>
+		<item>English</item>
+		<item>French</item>
+		<item>German</item>
+		<item>Spanish</item>
+	</string-array>
+	<string-array name="grouplist_add_typeslist">
+		<item>Test</item>
+		<item>List</item>
+	</string-array>
+
+	<string name="grouplist_edit">Change group name</string>
+	<string name="grouplist_edit_field_h">Enter new name</string>
+
+	<string name="grouplist_delete">Delete group</string>
+	<string name="grouplist_delete_question">Delete this group?</string>
+
+
+
+	<!--WordGroup-->
+	<string name="group_menu_search">Search words</string>
+
+	<string-array name="group_tabnames">
+		<item>Testing</item>
+		<item>Management</item>
+	</string-array>
+
+	<string name="group_empty">No words available!</string>
+
+
+	<string name="group_add">Add word</string>
+
+	<string name="group_edit">Edit word</string>
+
+	<string name="group_delete">Delete word</string>
+	<string name="group_delete_question">Delete this word?</string>
+
+
+
+	<!--Group backup-->
+	<string name="group_backup_save">Save backup</string>
+	<string name="group_backup_save_edittex_h">Enter backup file name</string>
+
+	<string name="group_backup_load">Load backup</string>
+	<string name="group_backup_load_delete">Delete entry</string>
+	<string name="group_backup_load_list">List</string>
+	<string name="group_backup_load_test">Test</string>
+	<string name="group_backup_load_nogroups">No group backups are available!</string>
+
+	<!--WordGroupTester-->
+	<string name="tester_add_help">Auxiliary text</string>
+	<string name="tester_add_help_h">Clarifies query</string>
+	<string name="tester_add_syn">Synonyms</string>
+	<string name="tester_add_syn_h">Alternative answer</string>
+	<string-array name="tester_add_langs">
+		<item>Word in Polish</item>
+		<item>Word in English</item>
+		<item>Word in French</item>
+		<item>Word in German</item>
+		<item>Word in Spanish</item>
+	</string-array>
+
+	<string name="tester_efficiency">Your efficiency is </string>
+	<string name="tester_mistake">Mistake!</string>
+
+	<string name="tester_results_retry">Retry test</string>
+	<plurals name="tester_results_correct">
+		<item quantity="one">Correct answer is</item>
+		<item quantity="few">Correct answers are:\n</item>
+	</plurals>
+	<string name="tester_results_success">You passed the test flawlessly!</string>
+
+
+
+	<!--WordGroupList-->
+	<string name="list_word">Word</string>
+	<string name="list_word_h">Your word</string>
+	<string name="list_help">Comment</string>
+	<string name="list_help_h">Optional clarification</string>
+
+
+
+	<!--Sample texts-->
+	<string name="sample_short">Text sample</string>
+	<string name="sample_long">Quite long sample text, which is bound not to be in final application due to its outstanding irrelevancy.</string>
+	
+</resources>
