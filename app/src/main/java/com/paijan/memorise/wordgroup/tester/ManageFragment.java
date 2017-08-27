@@ -17,10 +17,10 @@ import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.paijan.memorise.R;
 import com.paijan.memorise.convenience.ListViewAdapterBase;
+import com.paijan.memorise.convenience.ToastWrapper;
 import com.paijan.memorise.grouplist.GroupListActivity;
 import com.paijan.memorise.wordgroup.tester.dialog.AddDialog;
 import com.paijan.memorise.wordgroup.tester.dialog.RemoveDialog;
@@ -29,19 +29,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class ManageFragment extends Fragment {
-	private OnWordGroupChangeListener mOnWordGroupChangeListener;
 	private WordGroup mWordGroup;
 	private ListView mListView;
 	private View mEmptyView;
 	private int mContextListViewItemIndex;
 
-	public static ManageFragment newInstance(WordGroup wordGroup, OnWordGroupChangeListener onWordGroupChangeListener){
+	public static ManageFragment newInstance(WordGroup wordGroup) {
 		Bundle bundle = new Bundle(1);
 		bundle.putSerializable(GroupListActivity.KEY_WORD_GROUP, wordGroup);
 
 		ManageFragment result = new ManageFragment();
 		result.mWordGroup = wordGroup;
-		result.mOnWordGroupChangeListener = onWordGroupChangeListener;
 		result.setArguments(bundle);
 		result.setHasOptionsMenu(true);
 		return result;
@@ -50,7 +48,7 @@ public class ManageFragment extends Fragment {
 	// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- Callbacks
 
 	@Override
-	public void onCreate(Bundle savedInstanceState){
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mWordGroup = (WordGroup) getArguments().getSerializable(GroupListActivity.KEY_WORD_GROUP);
 	}
@@ -60,14 +58,23 @@ public class ManageFragment extends Fragment {
 		LinearLayout view = new LinearLayout(getActivity());
 		view.setOrientation(LinearLayout.VERTICAL);
 
-		view.addView(mListView = (ListView)inflater.inflate(R.layout.usable_listview, view, false));
-		mListView.setAdapter(new ListViewAdapter(new View.OnClickListener() { @Override public void onClick (View v) { showAddDialog(); } }));
-		mListView.setOnItemClickListener(mListViewOnClickListener);
+		view.addView(mListView = (ListView) inflater.inflate(R.layout.usable_listview, view, false));
+		mListView.setAdapter(new ListViewAdapter(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) { showAddDialog(); }
+		}));
+		mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) { displayWordEfficiency(position); }
+		});
 		manageContextMenuRegistry();
 
 		view.addView(mEmptyView = inflater.inflate(R.layout.usable_empty, view, false));
-		((TextView)mEmptyView.findViewById(R.id.usable_empty_text)).setText(getString(R.string.group_empty));
-		mEmptyView.findViewById(R.id.usable_empty_button).setOnClickListener(new View.OnClickListener() { @Override public void onClick (View v) { showAddDialog(); } });
+		((TextView) mEmptyView.findViewById(R.id.usable_empty_text)).setText(getString(R.string.group_empty));
+		mEmptyView.findViewById(R.id.usable_empty_button).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) { showAddDialog(); }
+		});
 
 		notifyListView();
 		return view;
@@ -76,7 +83,7 @@ public class ManageFragment extends Fragment {
 	// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- Action bar
 
 	@Override
-	public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		getActivity().getMenuInflater().inflate(R.menu.group_menu, menu);
 		initSearchView(menu);
 	}
@@ -85,11 +92,12 @@ public class ManageFragment extends Fragment {
 		SearchView searchView = new SearchView(getContext());
 		searchItem.setActionView(searchView);
 		searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-			@Override public boolean onQueryTextSubmit(String query) { return true; }
-			@Override public boolean onQueryTextChange(String newText) {
+			@Override
+			public boolean onQueryTextSubmit(String query) { return true; }
+			@Override
+			public boolean onQueryTextChange(String newText) {
 				getAdapter().getFilter().filter(newText);
 				manageContextMenuRegistry(newText);
-				notifyListView();
 				return true;
 			}
 		});
@@ -99,9 +107,9 @@ public class ManageFragment extends Fragment {
 
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-		if(v==mListView){
+		if (v == mListView) {
 			getActivity().getMenuInflater().inflate(R.menu.group_context_tester, menu);
-			mContextListViewItemIndex = ((AdapterView.AdapterContextMenuInfo)menuInfo).position;
+			mContextListViewItemIndex = ((AdapterView.AdapterContextMenuInfo) menuInfo).position;
 
 			Word word = mWordGroup.getWord(mContextListViewItemIndex);
 			int titleRes = (word.isEnabled()) ? R.string.tester_disable : R.string.tester_enable;
@@ -111,7 +119,7 @@ public class ManageFragment extends Fragment {
 
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
-		switch (item.getItemId()){
+		switch (item.getItemId()) {
 			case R.id.group_context_tester_add:
 				showAddDialog();
 				return true;
@@ -136,56 +144,65 @@ public class ManageFragment extends Fragment {
 	}
 	private final AddDialog.AddDialogListener mAddDialogListener = new AddDialog.AddDialogListener() {
 		@Override
-		public void onAdd (Word word) {
+		public void onAdd(Word word) {
 			mWordGroup.addWord(word);
 			notifyListView();
-			mOnWordGroupChangeListener.onChange();
-			mListView.setSelection(mListView.getCount()-1);
+			getOnWordGroupChangeListener().onWordGroupChange();
+			mListView.setSelection(mListView.getCount() - 1);
 		}
 	};
 
 	private void showEditDialog() {
-		AddDialog.newInstance(mEditDialogListener, mWordGroup, mWordGroup.getWord(mContextListViewItemIndex))
-				.show(getActivity(), "edit_dialog");
+		AddDialog.newInstance(mEditDialogListener, mWordGroup, mWordGroup.getWord(mContextListViewItemIndex)).show(getActivity(), "edit_dialog");
 	}
 	private final AddDialog.EditDialogListener mEditDialogListener = new AddDialog.EditDialogListener() {
 		@Override
-		public void onEdit (Word word) {
+		public void onEdit(Word word) {
 			mWordGroup.editWord(mContextListViewItemIndex, word);
 			notifyListView();
-			mOnWordGroupChangeListener.onChange();
+			getOnWordGroupChangeListener().onWordGroupChange();
 		}
 	};
 
-	private void showRemoveDialog(){
+	private void showRemoveDialog() {
 		RemoveDialog.newInstance(mRemoveDialogListener).show(getActivity(), "remove_dialog");
 	}
 	private final RemoveDialog.RemoveDialogListener mRemoveDialogListener = new RemoveDialog.RemoveDialogListener() {
 		@Override
-		public void onRemove () {
+		public void onRemove() {
 			mWordGroup.removeWord(mContextListViewItemIndex);
 			notifyListView();
-			mOnWordGroupChangeListener.onChange();
+			getOnWordGroupChangeListener().onWordGroupChange();
 		}
 	};
 
-	// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- Listeners
+	// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- Activity communication listeners
 
-	AdapterView.OnItemClickListener mListViewOnClickListener = new AdapterView.OnItemClickListener() {
-		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-			float eff = ManageFragment.this.mWordGroup.getWord(position).getAccuracyPercent();
-			Toast.makeText(ManageFragment.this.getActivity(), getString(R.string.tester_efficiency) + " " + eff + "%", Toast.LENGTH_SHORT).show();
-		}
-	};
+	public interface OnWordGroupChangeListener {
+		void onWordGroupChange();
+	}
 
-	// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- MISC
+	private OnWordGroupChangeListener getOnWordGroupChangeListener() {
+		return (OnWordGroupChangeListener) getContext();
+	}
+
+	private ToastWrapper getToastWrapper() {
+		return ((PagerActivity)getContext()).getToastWrapper();
+	}
+
+	// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- Misc
+
+	private void displayWordEfficiency(int position) {
+		float eff = mWordGroup.getWord(position).getAccuracyPercent();
+		String message = getString(R.string.tester_efficiency) + " " + eff + "%";
+		getToastWrapper().show(message);
+	}
 
 	public void manageContextMenuRegistry() {
 		manageContextMenuRegistry("");
 	}
-	public void manageContextMenuRegistry (String filter) {
-		if(filter.isEmpty()) registerForContextMenu(mListView);
+	public void manageContextMenuRegistry(String filter) {
+		if (filter.isEmpty()) registerForContextMenu(mListView);
 		else unregisterForContextMenu(mListView);
 	}
 
@@ -193,32 +210,29 @@ public class ManageFragment extends Fragment {
 		Word word = mWordGroup.getWord(mContextListViewItemIndex);
 		word.setEnabled(!word.isEnabled());
 		mWordGroup.save();
-		mOnWordGroupChangeListener.onChange();
+		getOnWordGroupChangeListener().onWordGroupChange();
 		notifyListView();
 	}
 
-	public void notifyListView(){
+	public void notifyListView() {
 		getAdapter().notifyDataSetChanged();
 		updateView();
 	}
 	private ListViewAdapter getAdapter() {
 		return ((ListViewAdapter) mListView.getAdapter());
 	}
-	private void updateView(){
-		if(getAdapter().getItemCount()==0){
+	private void updateView() {
+		if (getAdapter().getItemCount() == 0) {
 			mListView.setVisibility(View.GONE);
 			mEmptyView.setVisibility(View.VISIBLE);
-		} else{
+		} else {
 			mListView.setVisibility(View.VISIBLE);
 			mEmptyView.setVisibility(View.GONE);
 		}
 	}
 
-	public interface OnWordGroupChangeListener{
-		void onChange();
-	}
 
-	private class ListViewAdapter extends ListViewAdapterBase implements Filterable{
+	private class ListViewAdapter extends ListViewAdapterBase implements Filterable {
 		private final int CORRECT_COLOR;
 		private final int DISABLED_COLOR;
 		private final int MISTAKE_COLOR;
@@ -227,11 +241,11 @@ public class ManageFragment extends Fragment {
 		private final View.OnClickListener mOnButtonClickListener;
 		private Filter mFilter;
 
-		public ListViewAdapter(View.OnClickListener listener){
+		public ListViewAdapter(View.OnClickListener listener) {
 			mOnButtonClickListener = listener;
 
 			MISTAKE_COLOR = ContextCompat.getColor(getContext(), R.color.TextTesterMistake);
-			DISABLED_COLOR= ContextCompat.getColor(getContext(), R.color.TextDim);
+			DISABLED_COLOR = ContextCompat.getColor(getContext(), R.color.TextDim);
 			CORRECT_COLOR = ContextCompat.getColor(getContext(), R.color.Text);
 
 			mFilteredWords = mWordGroup.getWords();
@@ -243,14 +257,14 @@ public class ManageFragment extends Fragment {
 		}
 
 		@Override
-		protected int getItemCount () {
+		protected int getItemCount() {
 			return mFilteredWords.size();
 		}
 
 		@Override
-		protected View getViewItem (int position, View convertView, ViewGroup parent) {
+		protected View getViewItem(int position, View convertView, ViewGroup parent) {
 			ViewHolder viewHolder;
-			if(convertView == null){
+			if (convertView == null) {
 				convertView = getLayoutInflater().inflate(R.layout.tester_listview_item, parent, false);
 				viewHolder = new ViewHolder();
 
@@ -265,8 +279,8 @@ public class ManageFragment extends Fragment {
 			viewHolder.text2.setText(word.getLangFirst2());
 
 			int colorRes;
-			if(!word.isEnabled()) colorRes = DISABLED_COLOR;
-			else if(word.isMistaken()) colorRes = MISTAKE_COLOR;
+			if (!word.isEnabled()) colorRes = DISABLED_COLOR;
+			else if (word.isMistaken()) colorRes = MISTAKE_COLOR;
 			else colorRes = CORRECT_COLOR;
 			viewHolder.text1.setTextColor(colorRes);
 			viewHolder.text2.setTextColor(colorRes);
@@ -275,16 +289,16 @@ public class ManageFragment extends Fragment {
 		}
 
 		@Override
-		protected View getViewButton (View convertView, ViewGroup parent) {
-			if(convertView == null){
+		protected View getViewButton(View convertView, ViewGroup parent) {
+			if (convertView == null) {
 				convertView = getLayoutInflater().inflate(R.layout.usable_addbutton, parent, false);
 				convertView.findViewById(R.id.usable_empty_button).setOnClickListener(mOnButtonClickListener);
-				((TextView)convertView.findViewById(R.id.usable_empty_text)).setText(R.string.group_add);
+				((TextView) convertView.findViewById(R.id.usable_empty_text)).setText(R.string.group_add);
 			}
 			return convertView;
 		}
 
-		private class ViewHolder{
+		private class ViewHolder {
 			TextView text1;
 			TextView text2;
 		}
@@ -297,19 +311,19 @@ public class ManageFragment extends Fragment {
 
 		@Override
 		public Filter getFilter() {
-			if(mFilter==null) {
+			if (mFilter == null) {
 				mFilter = new Filter() {
 					@Override
 					protected FilterResults performFiltering(CharSequence constraint) {
 						ArrayList<Word> testers;
-						if(constraint == null || constraint.length() == 0){
+						if (constraint == null || constraint.length() == 0) {
 							testers = mWordGroup.getWords();
-						} else{
+						} else {
 							String search = constraint.toString().toLowerCase();
 							testers = new ArrayList<>();
-							for(Word tester : mWordGroup.getWords()) {
-								for(String s : tester.getAllLangs()) {
-									if(s.toLowerCase().contains(search)){
+							for (Word tester : mWordGroup.getWords()) {
+								for (String s : tester.getAllLangs()) {
+									if (s.toLowerCase().contains(search)) {
 										testers.add(tester);
 										break;
 									}
@@ -320,14 +334,15 @@ public class ManageFragment extends Fragment {
 						FilterResults filterResults = new FilterResults();
 						filterResults.count = testers.size();
 						filterResults.values = testers;
+
 						return filterResults;
 					}
 
-					@SuppressWarnings("unchecked")
+					@SuppressWarnings ("unchecked")
 					@Override
 					protected void publishResults(CharSequence constraint, FilterResults results) {
 						mFilteredWords = (ArrayList<Word>) results.values;
-						notifyDataSetChanged();
+						notifyListView();
 					}
 				};
 			}

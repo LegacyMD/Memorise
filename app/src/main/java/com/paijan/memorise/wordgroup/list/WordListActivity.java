@@ -72,7 +72,6 @@ public class WordListActivity extends AppCompatActivity {
 			@Override public boolean onQueryTextChange(String newText) {
 				getAdapter().getFilter().filter(newText);
 				manageContextMenuRegistry(newText);
-				notifyListView();
 				return true;
 			}
 		});
@@ -241,7 +240,7 @@ public class WordListActivity extends AppCompatActivity {
 							String search = constraint.toString().toLowerCase();
 							words = new ArrayList<>();
 							for (Word word : mWordGroupList.getWords()) {
-								if (word.getWord().toLowerCase().contains(search)) {
+								if (word.getWord().toLowerCase().contains(search) || (word.getHelp().toLowerCase().contains(search))) {
 									words.add(word);
 								}
 							}

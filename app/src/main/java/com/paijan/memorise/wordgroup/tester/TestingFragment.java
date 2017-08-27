@@ -15,10 +15,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.paijan.memorise.R;
 import com.paijan.memorise.convenience.ListViewAdapterBase;
+import com.paijan.memorise.convenience.ToastWrapper;
 
 import java.util.ArrayList;
 
@@ -34,19 +34,13 @@ public class TestingFragment extends Fragment {
 	private EditText mEditText;
 
 	private WordGroup mWordGroup;
-	private OnFragmentReadyListener mOnFragmentReadyListener;
-	private OnAnswerListener mOnAnswerListener;
-	private KeyboardManager mKeyboardManager;
 	private TestExecutor mTestExecutor;
 
 	// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- Create
 
-	public static TestingFragment newInstance(WordGroup wordGroup, OnFragmentReadyListener readyListener, OnAnswerListener answerListener, KeyboardManager keyboardManager) {
+	public static TestingFragment newInstance(WordGroup wordGroup) {
 		TestingFragment result = new TestingFragment();
 		result.mWordGroup = wordGroup;
-		result.mOnFragmentReadyListener = readyListener;
-		result.mOnAnswerListener = answerListener;
-		result.mKeyboardManager = keyboardManager;
 		return result;
 	}
 
@@ -55,7 +49,7 @@ public class TestingFragment extends Fragment {
 		View rootView = initRootView(inflater);
 		initFlags();
 		startTest();
-		mOnFragmentReadyListener.onReady();
+		getOnFragmentReadyListener().onFragmentReady();
 		return rootView;
 	}
 	private View initRootView(LayoutInflater inflater) {
@@ -84,7 +78,7 @@ public class TestingFragment extends Fragment {
 		RES_FLAG2 = mWordGroup.getLang2().getFlagId();
 	}
 
-	// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+	// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- Testing
 
 	public void startTest() {
 		if (mEditText != null) {
@@ -118,7 +112,7 @@ public class TestingFragment extends Fragment {
 					setViewResultsItems();
 					setActiveView(Active_View.results);
 				}
-				mKeyboardManager.hideKeyboard();
+				getKeyboardManager().hideKeyboard();
 				break;
 		}
 	}
@@ -182,10 +176,39 @@ public class TestingFragment extends Fragment {
 	private void answer(String answer) {
 		mTestExecutor.answer(answer);
 		manageView(mTestExecutor.nextWord());
-		mOnAnswerListener.onAnswer();
+		getOnAnswerListener().onAnswer();
 	}
 
-	// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- Listeners
+	// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- Activity communication listeners
+
+	public interface KeyboardManager {
+		void hideKeyboard();
+		void showKeyboard(View view);
+	}
+
+	public interface OnFragmentReadyListener {
+		void onFragmentReady();
+	}
+
+	public interface OnAnswerListener {
+		void onAnswer();
+	}
+
+	private KeyboardManager getKeyboardManager() {
+		return (KeyboardManager) getContext();
+	}
+	private OnFragmentReadyListener getOnFragmentReadyListener() {
+		return (OnFragmentReadyListener) getContext();
+	}
+	private OnAnswerListener getOnAnswerListener() {
+		return (OnAnswerListener) getContext();
+	}
+
+	private ToastWrapper getToastWrapper() {
+		return ((PagerActivity) getContext()).getToastWrapper();
+	}
+
+	// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- UI Listeners
 
 	private AdapterView.OnItemClickListener mOnResultsItemClickListener = new AdapterView.OnItemClickListener() {
 		@Override
@@ -201,7 +224,7 @@ public class TestingFragment extends Fragment {
 						message += "-" + answer + "\n";
 					}
 				}
-				Toast.makeText(TestingFragment.this.getActivity(), message.trim(), Toast.LENGTH_LONG).show();
+				getToastWrapper().show(message);
 			}
 		}
 	};
@@ -221,38 +244,24 @@ public class TestingFragment extends Fragment {
 		@Override
 		public void onClick(View v) {
 			startTest();
-			mKeyboardManager.showKeyboard(getEditText());
+			getKeyboardManager().showKeyboard(getEditText());
 		}
 	};
 
 	private TestExecutor.MistakeListener mMistakeListener = new TestExecutor.MistakeListener() {
 		@Override
 		public void mistake() {
-			Toast.makeText(TestingFragment.this.getActivity(), R.string.tester_mistake, Toast.LENGTH_SHORT).show();
+			getToastWrapper().show(getString(R.string.tester_mistake));
 		}
 	};
 
 	// -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- Misc
-
 
 	public EditText getEditText() {
 		return mEditText;
 	}
 	public Active_View getActiveView() {
 		return mActiveView;
-	}
-
-	public interface KeyboardManager {
-		void hideKeyboard();
-		void showKeyboard(View view);
-	}
-
-	public interface OnFragmentReadyListener {
-		void onReady();
-	}
-
-	public interface OnAnswerListener {
-		void onAnswer();
 	}
 
 	private class ResultsListViewAdapter extends ListViewAdapterBase {
