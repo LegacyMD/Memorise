@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="cancel">Anuluj</string>
 	<string name="file_empty">*Nazwa nie może być pusta</string>
 	<string name="file_exists">*Nazwa jest już w użyciu</string>
 	<string name="file_illegal">*Nazwa zawiera niedozwolone znaki</string>
@@ -16,13 +15,6 @@
 		<item>Słowo po niemiecku</item>
 		<item>Słowo po hiszpańsku</item>
 	</string-array>
-	<string name="group_backup_load">Wczytaj kopię zapasową</string>
-	<string name="group_backup_load_delete">Usuń kopię</string>
-	<string name="group_backup_load_list">Lista</string>
-	<string name="group_backup_load_nogroups">Nie znaleziono żadnych kopii zapasowych!</string>
-	<string name="group_backup_load_test">Test</string>
-	<string name="group_backup_save">Zapisz kopię zapasową</string>
-	<string name="group_backup_save_edittex_h">Wprowadź nazwę kopii</string>
 	<string name="group_delete">Usuń słowo</string>
 	<string name="group_delete_question">Usunąć słowo?</string>
 	<string name="group_edit">Edytuj słowo</string>
@@ -53,7 +45,6 @@
 	<string name="list_help_h">Opcjonalny dopisek</string>
 	<string name="list_word">Słowo</string>
 	<string name="list_word_h">Twoje słowo</string>
-	<string name="no">Nie</string>
 	<string name="sample_long">Nieprzeciętnie długi tekst, który nie powinien pojawić się w aplikacji ze wzlędu na swoją bezsensowność</string>
 	<string name="sample_short">Przykładowy tekst</string>
 	<string name="tester_add_help">Komentarz pomocniczy</string>
@@ -62,7 +53,6 @@
 	<string name="tester_add_syn_h">Alternatywna odpowiedź</string>
 	<string name="tester_efficiency">Twoja efektywność to</string>
 	<string name="tester_results_retry">Spróbuj ponownie</string>
-	<string name="yes">Tak</string>
 	<plurals name="tester_results_correct">
 		<item quantity="one">Prawidłowa odpowiedź to:\n</item>
 		<item quantity="many">Prawidłowe odpowiedzi to:\n</item>
@@ -71,4 +61,15 @@
 	<string name="tester_results_success">Wykonałeś test bezbłędnie!</string>
 	<string name="tester_mistake">Pomyłka!</string>
 	<string name="group_menu_search">Wyszukaj słówka</string>
+	<string name="group_backup">Kopia zapasowa</string>
+	<string name="group_backup_load">Wczytaj kopię</string>
+	<string name="group_backup_load_exists">Niektóre z zapisanych grup już istnieją. Wybierz opcję:</string>
+	<string name="group_backup_load_exists_keep">Zachowaj wszystkie</string>
+	<string name="group_backup_load_exists_overwrite">Nadpisz wszystkie</string>
+	<string name="group_backup_load_notfound">Nie znaleziono żadnych kopii zapasowych!</string>
+	<string name="group_backup_noexternal">Nie odnaleziono pamięci zewnętrznej!</string>
+	<string name="group_backup_save">Zapisz kopię</string>
+	<string name="group_backup_load_choose">Wybierz kopię</string>
+	<string name="tester_disable">Wyklucz słowo</string>
+	<string name="tester_enable">Przywróć słowo</string>
 </resources>

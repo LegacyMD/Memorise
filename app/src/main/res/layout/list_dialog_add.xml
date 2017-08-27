@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:paddingEnd="@dimen/margin_level_1"
-	android:paddingLeft="@dimen/margin_level_1"
-	android:paddingRight="@dimen/margin_level_1"
-	android:paddingStart="@dimen/margin_level_1"
-	tools:context="paijan.memorise.list.WordListManage" >
+<TableLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+	xmlns:tools = "http://schemas.android.com/tools"
+	android:layout_width = "fill_parent"
+	android:layout_height = "fill_parent"
+	android:paddingEnd = "@dimen/margin_level_1"
+	android:paddingLeft = "@dimen/margin_level_1"
+	android:paddingRight = "@dimen/margin_level_1"
+	android:paddingStart = "@dimen/margin_level_1"
+	tools:context = "com.paijan.memorise.wordgroup.list.WordListActivity" >
 
-	<TableRow>
-		<TextView android:text="@string/list_word" />
+	<TableRow >
 
-		<EditText android:id="@+id/list_add_dialog_edit1"
-				  style="@style/Theme.EditText"
-				  android:layout_width="0dp"
-				  android:layout_weight="1"
-				  android:hint="@string/list_word_h"/>
-	</TableRow>
+		<TextView android:text = "@string/list_word" />
 
-	<TableRow>
-		<TextView android:text="@string/list_help" />
+		<EditText
+			android:id = "@+id/list_add_dialog_edit1"
+			style = "@style/Theme.EditText"
+			android:layout_width = "0dp"
+			android:layout_weight = "1"
+			android:hint = "@string/list_word_h" />
+	</TableRow >
 
-		<EditText android:id="@+id/list_add_dialog_edit2"
-				  style="@style/Theme.EditText"
-				  android:layout_width="0dp"
-				  android:layout_weight="1"
-				  android:hint="@string/list_help_h"/>
-	</TableRow>
+	<TableRow >
 
-</TableLayout>
+		<TextView android:text = "@string/list_help" />
+
+		<EditText
+			android:id = "@+id/list_add_dialog_edit2"
+			style = "@style/Theme.EditText"
+			android:layout_width = "0dp"
+			android:layout_weight = "1"
+			android:hint = "@string/list_help_h" />
+	</TableRow >
+
+</TableLayout >

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+	android:layout_width = "match_parent"
+	android:layout_height = "wrap_content"
+	android:gravity = "center_vertical|end|center_horizontal"
+	android:orientation = "horizontal"
+	android:padding = "@dimen/margin_level_0" >
+
+	<TextView
+		style = "@style/Theme.FullscreenInformationText"
+		android:textStyle="normal"
+		android:layout_width = "wrap_content"
+		android:layout_height = "wrap_content"
+		android:text = "@string/tester_results_success" />
+
+	<ImageButton
+		android:id = "@+id/tester_success_button"
+		android:layout_width = "wrap_content"
+		android:layout_height = "wrap_content"
+		android:contentDescription = "@null"
+		android:src = "@drawable/ic_action_refresh"
+		android:layout_marginStart= "@dimen/margin_level_0"
+		android:layout_marginLeft="@dimen/margin_level_0" />
+
+</LinearLayout >

@@ -5,7 +5,7 @@
 	<dimen name="text_size_listview_item">20sp</dimen>
 	<dimen name="text_size_informative_small">15sp</dimen>
 	<dimen name="text_size_informative">17sp</dimen>
-	<dimen name="text_size_screen_information">26sp</dimen>
+	<dimen name="text_size_screen_information">22sp</dimen>
 
 	<!--Margin-->
 	<dimen name="margin_level_0">3dp</dimen>

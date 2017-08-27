@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+	<item android:id="@+id/group_context_tester_add"
+		  android:title="@string/group_add" />
+
+	<item android:id="@+id/group_context_tester_edit"
+		  android:title="@string/group_edit" />
+
+	<item android:id="@+id/group_context_tester_disable"
+		  android:title="@string/sample_short"  />
+
+	<item android:id="@+id/group_context_tester_remove"
+		  android:title="@string/group_delete" />
+
+</menu>

@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+	<item android:id="@+id/group_context_list_add"
+		  android:title="@string/group_add" />
+
+	<item android:id="@+id/group_context_list_edit"
+		  android:title="@string/group_edit" />
+
+	<item android:id="@+id/group_context_list_remove"
+		  android:title="@string/group_delete" />
+
+</menu>

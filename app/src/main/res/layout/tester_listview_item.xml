@@ -1,36 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-	android:gravity="center_vertical"
-	android:orientation="horizontal"
-	android:paddingTop="@dimen/margin_level_0"
-	android:paddingBottom="@dimen/margin_level_0"
-	tools:context="paijan.memorise.tester.WordTesterPager" >
+<LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+	xmlns:tools = "http://schemas.android.com/tools"
+	android:layout_width = "match_parent"
+	android:layout_height = "wrap_content"
+	android:gravity = "center_vertical"
+	android:orientation = "horizontal"
+	android:paddingTop = "@dimen/margin_level_0"
+	android:paddingBottom = "@dimen/margin_level_0"
+	tools:context = "com.paijan.memorise.wordgroup.tester.ManageFragment" >
 
-	<TextView android:id="@+id/tester_listview_item_text1"
-		style="@style/Theme.ListViewItemText"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_weight="1"
-		android:gravity="start"
-		android:text="@string/sample_short"/>
+	<TextView
+		android:id = "@+id/tester_listview_item_text1"
+		style = "@style/Theme.ListViewItemText"
+		android:layout_width = "0dp"
+		android:layout_height = "wrap_content"
+		android:layout_weight = "1"
+		android:gravity = "start"
+		android:text = "@string/sample_short" />
 
-	<TextView android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_weight="1"
-		android:gravity="center"
-		android:text="-"
-		android:textStyle="bold"/>
+	<View
+		android:layout_width="1dp"
+		android:layout_height="match_parent"
+		android:background="@color/WhiteBright"
+		android:layout_marginRight="@dimen/margin_level_1"
+		android:layout_marginEnd="@dimen/margin_level_1"
+		android:layout_marginLeft="@dimen/margin_level_1"
+		android:layout_marginStart="@dimen/margin_level_1" />
 
-	<TextView android:id="@+id/tester_listview_item_text2"
-		style="@style/Theme.ListViewItemText"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_weight="1"
-		android:gravity="end"
-		android:text="@string/sample_short"/>
+	<TextView
+		android:id = "@+id/tester_listview_item_text2"
+		style = "@style/Theme.ListViewItemText"
+		android:layout_width = "0dp"
+		android:layout_height = "wrap_content"
+		android:layout_weight = "1"
+		android:gravity = "end"
+		android:text = "@string/sample_short" />
 
-</LinearLayout>
+</LinearLayout >

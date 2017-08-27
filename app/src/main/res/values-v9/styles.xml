@@ -1,7 +1,0 @@
-<resources>
-
-	<style name="Theme.DialogThemeBase" parent="">
-		<!--To avoid unavailable attributes belo API 11-->
-	</style>
-
-</resources>

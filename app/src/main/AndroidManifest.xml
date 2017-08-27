@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="paijan.memorise"
+<manifest package="com.paijan.memorise"
 	xmlns:android="http://schemas.android.com/apk/res/android" >
 
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -14,7 +14,7 @@
 
 
 		<activity
-			android:name=".grouplist.GroupList"
+			android:name=".grouplist.GroupListActivity"
 			android:label="@string/name_app"
 			android:screenOrientation="portrait" >
 
@@ -27,25 +27,25 @@
 
 
 		<activity
-			android:name=".tester.WordTesterPager"
-			android:label="@string/title_activity_word_tester_pager"
-			android:parentActivityName=".grouplist.GroupList"
+			android:name=".wordgroup.tester.PagerActivity"
+			android:label=""
+			android:parentActivityName=".grouplist.GroupListActivity"
 			android:screenOrientation="portrait" >
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".grouplist.GroupList"/>
+				android:value=".grouplist.GroupListActivity"/>
 		</activity>
 
 
 
 		<activity
-			android:name=".list.WordListManage"
-			android:label="@string/title_activity_word_list_manage"
-			android:parentActivityName=".grouplist.GroupList"
+			android:name=".wordgroup.list.WordListActivity"
+			android:label=""
+			android:parentActivityName=".grouplist.GroupListActivity"
 			android:screenOrientation="portrait" >
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value="paijan.memorise.grouplist.GroupList"/>
+				android:value=".grouplist.GroupListActivity"/>
 		</activity>
 
 

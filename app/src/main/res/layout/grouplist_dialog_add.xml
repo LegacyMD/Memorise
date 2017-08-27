@@ -1,52 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:paddingEnd="@dimen/margin_level_1"
-	android:paddingLeft="@dimen/margin_level_1"
-	android:paddingRight="@dimen/margin_level_1"
-	android:paddingStart="@dimen/margin_level_1"
-	tools:context="paijan.memorise.grouplist.GroupList" >
+<TableLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+	xmlns:tools = "http://schemas.android.com/tools"
+	android:layout_width = "fill_parent"
+	android:layout_height = "fill_parent"
+	android:paddingEnd = "@dimen/margin_level_1"
+	android:paddingLeft = "@dimen/margin_level_1"
+	android:paddingRight = "@dimen/margin_level_1"
+	android:paddingStart = "@dimen/margin_level_1"
+	tools:context = "com.paijan.memorise.grouplist.GroupListActivity" >
 
-	<TableRow>
-		<TextView android:text="@string/grouplist_add_field_name"/>
+	<TableRow >
 
-		<EditText android:id="@+id/group_add_dialog_edittext_name"
-			style="@style/Theme.EditText"
-			android:layout_width="0dp"
-			android:layout_weight="1"
-			android:hint="@string/grouplist_add_field_name_h"/>
-	</TableRow>
+		<TextView android:text = "@string/grouplist_add_field_name" />
 
-	<TableRow android:id="@+id/grouplist_dialog_add_spinnerrow">
-		<TextView android:id="@+id/grouplist_dialog_add_spinnerrow_text"
-			android:text="@string/grouplist_add_field_langs" />
+		<EditText
+			android:id = "@+id/group_add_dialog_edittext_name"
+			style = "@style/Theme.EditText"
+			android:layout_width = "0dp"
+			android:layout_weight = "1"
+			android:hint = "@string/grouplist_add_field_name_h" />
+	</TableRow >
 
-		<Spinner android:id="@+id/grouplist_add_spinner_lang1"
-			android:layout_width="0dp"
-			android:layout_weight="1"/>
+	<TableRow android:id = "@+id/grouplist_dialog_add_spinnerrow" >
 
-		<Spinner android:id="@+id/grouplist_add_spinner_lang2"
-			android:layout_width="0dp"
-			android:layout_weight="1"/>
-	</TableRow>
+		<TextView
+			android:id = "@+id/grouplist_dialog_add_spinnerrow_text"
+			android:text = "@string/grouplist_add_field_langs" />
 
-	<TableRow>
-		<TextView android:text="@string/grouplist_add_field_type"/>
+		<Spinner
+			android:id = "@+id/grouplist_add_spinner_lang1"
+			android:layout_width = "0dp"
+			android:layout_weight = "1" />
 
-		<Spinner android:id="@+id/grouplist_add_spinner_type"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"/>
+		<Spinner
+			android:id = "@+id/grouplist_add_spinner_lang2"
+			android:layout_width = "0dp"
+			android:layout_weight = "1" />
+	</TableRow >
 
-	</TableRow>
+	<TableRow >
+
+		<TextView android:text = "@string/grouplist_add_field_type" />
+
+		<Spinner
+			android:id = "@+id/grouplist_add_spinner_type"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content" />
+
+	</TableRow >
 
 	<TextView
-		android:id="@+id/grouplist_add_text_warning"
-		android:gravity="center"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:text="@string/file_exists"
-		android:textColor="@color/TextBackupFileExists"/>
-</TableLayout>
+		android:id = "@+id/grouplist_add_text_warning"
+		android:gravity = "center"
+		android:layout_width = "match_parent"
+		android:layout_height = "wrap_content"
+		android:text = "@string/file_exists"
+		android:textColor = "@color/TextWarning" />
+</TableLayout >

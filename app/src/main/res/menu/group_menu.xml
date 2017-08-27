@@ -1,16 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
 	  xmlns:app="http://schemas.android.com/apk/res-auto"
 	  xmlns:tools="http://schemas.android.com/tools"
-	  tools:context="paijan.memorise.tester.WordTesterPager">
+	  tools:context="com.paijan.memorise.wordgroup.tester.ManageFragment">
 
 	<item android:id="@+id/group_menu_search"
 		  android:title="@string/group_menu_search"
 		  android:icon="@drawable/ic_action_search"
 		  app:showAsAction="ifRoom|collapseActionView"
 		  android:actionViewClass="android.support.v7.widget.SearchView"/>
-
-	<item android:id="@+id/group_menu_backup"
-		android:title="@string/group_backup_save"
-		android:icon="@drawable/ic_action_save"
-		app:showAsAction="ifRoom"/>
 </menu>

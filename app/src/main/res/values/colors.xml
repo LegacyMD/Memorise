@@ -1,47 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
 	<!--Transparency-->
 	<color name="Transparent">#0000</color>
 	<color name="Tint">#9b000000</color>
 
-	<!--General usable colors-->
+	<!--Generals-->
 	<color name="Back">@color/GrayLight</color>
 	<color name="Bar">@color/GrayDark</color>
-	<color name="Effect">@color/WhiteEffect</color>
+	<color name="Effect">@color/WhiteBright</color>
 
-	<!--Text usable colors-->
-	<color name="Text">@color/WhiteText</color>
-	<color name="TextSpinnerItem">#ffffff</color>
-	<color name="TextDim">@color/TextMedium</color>
+	<!--Text-->
+	<color name="Text">@color/WhiteBright</color>
+	<color name="TextBright">@color/WhiteBright</color>
+	<color name="TextDim">@color/WhiteDark</color>
 	<color name="TextTesterWord">@color/BlueHolo</color>
-	<color name="TextTesterMistake">@color/MistakeRed</color>
-	<color name="TextTesterSuccess">@color/BlueHolo</color>
-	<color name="TextBackupFileExists">@color/MistakeRed</color>
+	<color name="TextWarning">@color/Red</color>
+	<color name="TextTesterMistake">@color/Red</color>
 
-	<!--Dialog usable color-->
+	<!--Dialog-->
 	<color name="DialogTitle">@color/DialogText</color>
-	<color name="DialogLine">@color/WhiteEffect</color>
+	<color name="DialogDivider">@color/WhiteBright</color>
 	<color name="DialogText">@color/BlueHolo</color>
-	<color name="DialogButtonActiveColor">@color/WhiteEffect</color>
+	<color name="DialogButtonActiveColor">@color/WhiteBright</color>
 	<color name="DialogButtonColorList">@color/dialog_button_color</color>
 
 
-	<!--Sample colors-->
-	<color name="MistakeRed">#ffb00404</color>
 
+	<!--Usable colors-->
 	<color name="GrayLight">#ff3c3c3c</color>
 	<color name="GrayMedium">#ff262626</color>
 	<color name="GrayDark">#ff171717</color>
 
+	<color name="Red">#ffb00404</color>
+
 	<color name="BlueHolo">#33B9D5</color>
 	<color name="BlueHoloDark">#FF2597AF</color>
 
-	<color name="WhiteText">#ffacacac</color>
-	<color name="TextMedium">#ff808080</color>
-	<color name="WhiteEffect">#ffffffff</color>
+	<color name="White">#ffacacac</color>
+	<color name="WhiteBright">#ffffffff</color>
+	<color name="WhiteDark">#ff808080</color>
 
-	<!--Testing radiant values-->
+	<!--Radiant values for testing-->
 	<color name="Test1">#fffa00d7</color>
 	<color name="Test2">#ffeeff00</color>
 	<color name="Test3">#ff35ff00</color>

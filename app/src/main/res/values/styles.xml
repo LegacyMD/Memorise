@@ -19,17 +19,17 @@
 	<!--Text styles-->
 	<style name="Theme.HeaderText" parent="">
 		<item name="android:textColor">@color/Text</item>
-		<item name="android:textStyle">bold</item>
 		<item name="android:textSize">@dimen/text_size_actionbar</item>
+		<item name="android:textStyle">bold</item>
 	</style>
 
 	<style name="Theme.InformativeText" parent="">
-		<item name="android:textSize">@dimen/text_size_informative</item>
 		<item name="android:textColor">@color/Text</item>
+		<item name="android:textSize">@dimen/text_size_informative</item>
 		<item name="android:textStyle">italic</item>
 	</style>
 
-	<style name="Theme.FullscreenInformationText" parent="Theme.InformativeText">
+	<style name="Theme.FullscreenInformationText" parent="Theme.HeaderText">
 		<item name="android:textSize">@dimen/text_size_screen_information</item>
 	</style>
 
@@ -45,7 +45,7 @@
 	<!--Word tester testing styles-->
 	<style name="Theme.WordTester.Word" parent="Theme.HeaderText">
 		<item name="android:textColor">@color/TextTesterWord</item>
-		<item name="android:maxLines">1</item>
+		<item name="android:maxLines">2</item>
 	</style>
 
 	<style name="Theme.WordTester.Comment" parent="Theme.InformativeText">
@@ -55,7 +55,7 @@
 
 
 
-	<!--WordList styles-->
+	<!--Word styles-->
 	<style name="Theme.WordList.Word" parent="Theme.InformativeText"/>
 	<style name="Theme.WordList.Comment" parent="Theme.InformativeText">
 		<item name="android:textSize">@dimen/text_size_informative_small</item>
@@ -77,28 +77,15 @@
 
 
 	<!--Dialog related themes-->
-	<style name="Theme.DialogThemeBaseBase" parent="">
+	<style name="Theme.DialogTheme" parent="">
+		<item name="android:buttonBarButtonStyle">@style/Theme.DialogButton</item>
 		<item name="android:windowBackground">@color/Transparent</item>
 		<item name="android:windowIsFloating">true</item>
 		<item name="android:windowTitleStyle">@style/Theme.DialogHeaderText</item>
 		<item name="android:editTextStyle">@style/Theme.EditText</item>
-	</style>
-
-	<style name="Theme.DialogTheme.Grouplist" parent="Theme.DialogThemeBase">
 		<item name="android:textViewStyle">@style/Theme.DialogInformativeTextBlue</item>
 	</style>
 
-	<style name="Theme.DialogTheme.Tester" parent="Theme.DialogThemeBase">
-		<item name="android:textViewStyle">@style/Theme.DialogInformativeTextBlue</item>
-	</style>
-
-	<style name="Theme.DialogTheme.List" parent="Theme.DialogThemeBase">
-		<item name="android:textViewStyle">@style/Theme.DialogInformativeTextBlue</item>
-	</style>
-
-
-
-	<!--Dialog related styles-->
 	<style name="Theme.DialogHeaderText" parent="Theme.HeaderText">
 		<item name="android:textColor">@color/DialogTitle</item>
 	</style>

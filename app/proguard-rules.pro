@@ -1,6 +1,6 @@
 # Add project specific ProGuard rules here.
 # By default, the flags in this file are appended to flags specified
-# in D:\Programy\Android Studio\sdk/tools/proguard/proguard-android.txt
+# in E:/IntelliJ IDEA Community Edition 15.0.2/android_sdk/tools/proguard/proguard-android.txt
 # You can edit the include path and order by changing the proguardFiles
 # directive in build.gradle.
 #
